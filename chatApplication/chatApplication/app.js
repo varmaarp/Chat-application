@@ -61,24 +61,93 @@ app.use(function (err, req, res, next) {
 });
 
 var connections = []
+var queue = []
+var rooms = {}
+
+var connectUsers = function (socket) {
+
+    //if queue is empty -> add socket to queue display "finding someone to chat..."
+    if (queue.length === 0) {
+        console.log('socket pushed to waiting queue');
+        queue.push(socket);
+
+        //since no one to talk to, message area should be disabled
+        socket.emit('no user');
+    }
+    //if queue has a user -> pop user and create room with the socket
+    else {
+
+        //could write a function to make it random
+        var user = queue.pop();
+        var roomId = socket.id + '&' + user.id;
+        console.log('room id ' +roomId);
+
+        //join both to room
+        user.join(roomId);
+        socket.join(roomId);
+
+        //map room to user ids
+        rooms[user.id] = roomId;
+        rooms[socket.id] = roomId;
+
+        socket.emit('user connected');
+        user.emit('user connected');
+    }
+};
 
 io.sockets.on('connection', function (socket) {
-    connections.push(socket);
-    console.log('connected: %s socktes connected', connections.length);
-   // socket.emit('news', { hello: 'world' });
-   // socket.on('my other event', function (data) {
-   //     console.log(data);
-   // });
 
-    socket.on('disconnect', function (socket) {
+    //when a user connects -> add to connections
+    connections.push(socket);
+    console.log('Connected: %s socktes connected', connections.length);
+
+    //connecting to user waiting in queue
+    connectUsers(socket);
+    
+    //when a user sends message -> emit 'new message' to client with id of user who sent the message
+    socket.on('send message', function (data) {
+        console.log(data);
+        //io.sockets.emit('new message', { msg: data, id: socket.id });
+        var room = rooms[socket.id];
+        io.to(room).emit('new message', { msg: data, id: socket.id });
+    });
+
+    //Todo: Check for typing
+
+    //Todo: Check for stop typing
+
+    //deleting room entry from rooms object
+    var endChat = function (room) {
+        io.to(room).emit('chat end');
+        users = room.split('&');
+        var prop = users[0];
+        delete rooms[prop];
+        prop = users[1];
+        delete rooms[prop];
+    };
+
+    //Todo: When a user disconnects, ask for starting chat again
+    socket.on('start chat', function() {
+        connectUsers(socket);
+    });
+
+    //when user disconnects
+    socket.on('leave room', function () {
+        var room = rooms[socket.id];
+        endChat(room);
+    });
+
+    //when a user disconnects -> remove from connections and any rooms connected to
+    socket.on('disconnect', function () {
+        var room = rooms[socket.id];
+        if (room !== undefined) {
+            console.log('was connected to room while disconnecting');
+            endChat(room);
+        }
         connections.splice(connections.indexOf(socket), 1);
         console.log('Disconnected: %s sockets connected', connections.length);
     });
 
-    socket.on('send message', function (data) {
-        console.log(data);
-        io.sockets.emit('new message', {msg: data, id: socket.id});
-    });
 });
 
 module.exports = app;
