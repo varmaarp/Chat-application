@@ -12,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>dcc6dca0-fdec-4d56-b6ff-819a5f0af67a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>bin\www</StartupFile>
+    <StartupFile>app.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,9 +31,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\javascripts\chatClient.js" />
+    <Compile Include="public\javascripts\jquery\jquery-3.1.1.js" />
+    <Compile Include="public\javascripts\socket.io.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
-    <Compile Include="bin\www" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
@@ -42,20 +44,22 @@
     <Content Include="views\index.ejs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
+    <Folder Include="public\javascripts\jquery\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
     <Folder Include="typings\globals\body-parser\" />
+    <Folder Include="typings\globals\bootstrap\" />
     <Folder Include="typings\globals\cookie-parser\" />
     <Folder Include="typings\globals\debug\" />
     <Folder Include="typings\globals\express-serve-static-core\" />
     <Folder Include="typings\globals\express\" />
     <Folder Include="typings\globals\jade\" />
+    <Folder Include="typings\globals\jquery\" />
     <Folder Include="typings\globals\mime\" />
     <Folder Include="typings\globals\morgan\" />
     <Folder Include="typings\globals\node\" />
@@ -67,11 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\cookie-parser\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\debug\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express-serve-static-core\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jade\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\mime\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\morgan\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />

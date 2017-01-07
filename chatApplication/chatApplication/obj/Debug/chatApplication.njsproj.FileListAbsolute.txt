@@ -1,0 +1,2 @@
+G:\Arpit\Projects\Chat Application\chatApplication\chatApplication\obj\Debug\chatApplication.njsprojResolveAssemblyReference.cache
+G:\Arpit\Projects\Chat Application\chatApplication\chatApplication\bin\Microsoft.NodejsTools.WebRole.dll

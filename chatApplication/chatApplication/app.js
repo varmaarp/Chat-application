@@ -10,6 +10,9 @@ var users = require('./routes/users');
 
 var app = express();
 
+var server = app.listen(3000);
+var io = require('socket.io')(server);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -57,5 +60,25 @@ app.use(function (err, req, res, next) {
     });
 });
 
+var connections = []
+
+io.sockets.on('connection', function (socket) {
+    connections.push(socket);
+    console.log('connected: %s socktes connected', connections.length);
+   // socket.emit('news', { hello: 'world' });
+   // socket.on('my other event', function (data) {
+   //     console.log(data);
+   // });
+
+    socket.on('disconnect', function (socket) {
+        connections.splice(connections.indexOf(socket), 1);
+        console.log('Disconnected: %s sockets connected', connections.length);
+    });
+
+    socket.on('send message', function (data) {
+        console.log(data);
+        io.sockets.emit('new message', {msg: data, id: socket.id});
+    });
+});
 
 module.exports = app;
