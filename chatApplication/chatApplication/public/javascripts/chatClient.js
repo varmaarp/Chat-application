@@ -20,15 +20,16 @@
 
     $start.click(function () {
         socket.emit('start chat');
-        $('#chat-message').empty();
+        console.log('removing elements');
+        $('.chat-message').remove();
     });
    
     socket.on('new message', function (data) {
         if (data.id === socket.id) {
-            $chatBody.append('<div id="chat-message">' +'You: '+ data.msg + '</div>');
+            $chatBody.append('<div class="chat-message">' +'You: '+ data.msg + '</div>');
         }
         else {
-            $chatBody.append('<div id="chat-message">'+'Stranger: ' + data.msg + '</div>');
+            $chatBody.append('<div class="chat-message">'+'Stranger: ' + data.msg + '</div>');
         }
     });
 
@@ -41,6 +42,6 @@
     });
 
     socket.on('chat end', function () {
-        $chatBody.append('<div>Your chat has been disconnected </div>');
+        $chatBody.append('<div class="chat-message">Your chat has been disconnected </div>');
     });
 });
