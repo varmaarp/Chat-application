@@ -1,1 +1,18 @@
 A note pad
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Heading</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <span class="input-group-addon btn btn-primary">Button 1</span>
+                    <textarea class="form-control" placeholder="type here" rows="2" style="resize:none"></textarea>
+                    <span class="input-group-addon btn btn-primary">Button 2</span>
+                    <span class="input-group-addon btn btn-primary">Button 3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
