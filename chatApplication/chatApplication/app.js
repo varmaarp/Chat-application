@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -37,28 +38,6 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
 
 var connections = []
 var queue = []
@@ -107,12 +86,15 @@ io.sockets.on('connection', function (socket) {
     //when a user sends message -> emit 'new message' to client with id of user who sent the message
     socket.on('send message', function (data) {
         console.log(data);
-        //io.sockets.emit('new message', { msg: data, id: socket.id });
         var room = rooms[socket.id];
         io.to(room).emit('new message', { msg: data, id: socket.id });
     });
 
     //Todo: Check for typing
+    socket.on('is typing', function (data) {
+        var room = rooms[socket.id];
+        io.to(room).emit('user typing', {isTyping: data, id: socket.id});
+    });
 
     //Todo: Check for stop typing
 
@@ -141,13 +123,17 @@ io.sockets.on('connection', function (socket) {
     socket.on('disconnect', function () {
         var room = rooms[socket.id];
         if (room !== undefined) {
-            console.log('was connected to room while disconnecting');
             endChat(room);
         }
         connections.splice(connections.indexOf(socket), 1);
         console.log('Disconnected: %s sockets connected', connections.length);
     });
 
+    //open file explorer
+    /*
+    socket.on('open explorer', function () {
+        require('child_process').exec('start "" "f:\\test"');
+    });*/
 });
 
 module.exports = app;

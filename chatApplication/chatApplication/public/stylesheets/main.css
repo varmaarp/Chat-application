@@ -4,10 +4,6 @@ input {
     font: 13px "Trebuchet MS", sans-serif;
 }
 
-.chat{
-    max-width:500px;
-}
-
 .chat-messages,
 .chat textarea,
 .chat-name {
@@ -35,6 +31,7 @@ input {
     margin:0;
     max-width:100%;
     overflow-y:scroll;
+    margin-bottom:10px;
     height:50px;
 }
 
@@ -45,4 +42,9 @@ input {
 .chat textarea,
 .chat-name{
     outline:none;
+}
+#upload-photo {
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
 }

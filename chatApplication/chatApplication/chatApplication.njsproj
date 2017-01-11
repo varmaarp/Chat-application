@@ -31,20 +31,42 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\bootstrap\js\bootstrap.js" />
+    <Compile Include="public\bootstrap\js\bootstrap.min.js" />
+    <Compile Include="public\bootstrap\js\npm.js" />
     <Compile Include="public\javascripts\chatClient.js" />
     <Compile Include="public\javascripts\jquery\jquery-3.1.1.js" />
     <Compile Include="public\javascripts\socket.io.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Content Include="package.json" />
+    <Content Include="public\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="public\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="public\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="public\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="public\bootstrap\css\bootstrap.css" />
+    <Content Include="public\bootstrap\css\bootstrap.css.map" />
+    <Content Include="public\bootstrap\css\bootstrap.min.css" />
+    <Content Include="public\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="public\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\javascripts\socket.io.js.map" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="typings.json" />
     <Content Include="views\error.ejs" />
+    <Content Include="views\index3.ejs" />
     <Content Include="views\index.ejs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\" />
+    <Folder Include="public\bootstrap\" />
+    <Folder Include="public\bootstrap\css\" />
+    <Folder Include="public\bootstrap\fonts\" />
+    <Folder Include="public\bootstrap\js\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
     <Folder Include="public\javascripts\jquery\" />
