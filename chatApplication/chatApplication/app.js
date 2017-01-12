@@ -39,6 +39,7 @@ app.use(function (req, res, next) {
 
 // error handlers
 
+
 var connections = []
 var queue = []
 var rooms = {}
@@ -129,11 +130,6 @@ io.sockets.on('connection', function (socket) {
         console.log('Disconnected: %s sockets connected', connections.length);
     });
 
-    //open file explorer
-    /*
-    socket.on('open explorer', function () {
-        require('child_process').exec('start "" "f:\\test"');
-    });*/
 });
 
 module.exports = app;

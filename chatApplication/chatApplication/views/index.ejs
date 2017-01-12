@@ -8,12 +8,13 @@
 	<title>Bootstrap 101 Template</title>
 
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/stylesheets/main.css" />
+	
 	<script type="text/javascript" src="javascripts/socket.io.js"></script>
 	<script type="text/javascript" src="/javascripts/jquery/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="/javascripts/chatClient.js"></script>
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
 
 </head>
 <body>
@@ -29,19 +30,22 @@
 			</div>
 		</div>
 		<div class="row">
+            
 			<div class="col-md-12">
+                
 				<div class="input-group">
+                    
 					<span class="input-group-addon btn btn-primary" id="leave">Disconnect</span>
 					<textarea class="form-control chat-textarea" id="chat-textarea" placeholder="Type your message here" rows="2" style="resize:none"></textarea>
-                    <label class="input-group-addon btn btn-primary" for="upload-photo">
+                    <label class="input-group-addon btn btn-primary" for="upload-input">
                     <span class="glyphicon glyphicon-picture" aria-hidden="false">
-                    <input type="file" name="pic" accept="image/*" id="upload-photo">
+                    <input id="upload-input" type="file" name="uploads[]" multiple="multiple" accept="image/*" />
                     </span></label>
-					<span class="input-group-addon btn btn-primary" id="send">Send</span>
+                    <span class="input-group-addon btn btn-primary" id="send">Send</span>
 				</div>
 			</div>
 		</div>
-		<div>
+		</div>
 	</div>
 </body>
 </html>

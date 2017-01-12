@@ -62,6 +62,7 @@
     <Content Include="views\index.ejs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="uploads\" />
     <Folder Include="public\" />
     <Folder Include="public\bootstrap\" />
     <Folder Include="public\bootstrap\css\" />
