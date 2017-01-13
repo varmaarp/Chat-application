@@ -1,4 +1,4 @@
-﻿var express = require('express');
+var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -128,6 +128,25 @@ io.sockets.on('connection', function (socket) {
         }
         connections.splice(connections.indexOf(socket), 1);
         console.log('Disconnected: %s sockets connected', connections.length);
+    });
+	
+	//after receiving image from user
+    socket.on('imageRequest', function (data) {
+        console.log('in imageRequest method');
+		var room = rooms[socket.id];
+		len = data.length;
+		var uploadPath;
+		for (var i=0; i<len; i++){
+			file = data[i];
+			uploadPath = path.join(__dirname, '/uploads/'+file.name);
+			console.log('path :'+uploadPath);
+			fs.readFile(uploadPath, function(err, buf){
+				io.to(room).emit('image', { val: true, buffer: buf.toString('base64'),id: socket.id });
+				console.log('sending file to client');
+			});
+			//delete from server
+			fs.unlink(uploadPath);
+		}
     });
 
 });
