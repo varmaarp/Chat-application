@@ -11,13 +11,15 @@ $(function(){
     var sendMessage = function () {
         socket.emit('send message', $message.val());
         $message.val('');
+		$message[0].focus();
+		$message[0].setSelectionRange(0,0);
     };
 
     function timeoutFunction() {
         typing = false;
         socket.emit('is typing', false);
     };
-
+	
     $('#upload-input').on('change', function () {
 
         var files = $(this).get(0).files;
@@ -67,6 +69,7 @@ $(function(){
 
     $message.keypress(function (e) {
         if (e.keyCode === 13) {
+			e.preventDefault();
             sendMessage();
             clearTimeout(timeout);
             timeout = setTimeout(timeoutFunction, 0);
