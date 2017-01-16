@@ -105,8 +105,12 @@ io.sockets.on('connection', function (socket) {
         users = room.split('&');
         var prop = users[0];
         delete rooms[prop];
+	console.log(prop);
+	queue.splice(queue.indexOf(prop), 1);
         prop = users[1];
         delete rooms[prop];
+	console.log(prop);
+	queue.splice(queue.indexOf(prop), 1);
     };
 
     //Todo: When a user disconnects, ask for starting chat again
@@ -127,6 +131,7 @@ io.sockets.on('connection', function (socket) {
             endChat(room);
         }
         connections.splice(connections.indexOf(socket), 1);
+		queue.splice(queue.indexOf(socket), 1);
         console.log('Disconnected: %s sockets connected', connections.length);
     });
 	
