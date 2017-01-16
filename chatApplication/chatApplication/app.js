@@ -60,7 +60,7 @@ var connectUsers = function (socket) {
         //could write a function to make it random
         var user = queue.pop();
         var roomId = socket.id + '&' + user.id;
-        console.log('room id ' +roomId);
+        console.log('room id ' + roomId);
 
         //join both to room
         user.join(roomId);
@@ -72,6 +72,8 @@ var connectUsers = function (socket) {
 
         socket.emit('user connected');
         user.emit('user connected');
+
+        console.log('after room queue length ' + queue.length);
     }
 };
 
@@ -80,10 +82,12 @@ io.sockets.on('connection', function (socket) {
     //when a user connects -> add to connections
     connections.push(socket);
     console.log('Connected: %s socktes connected', connections.length);
+    
 
     //connecting to user waiting in queue
     connectUsers(socket);
-    
+    console.log('queue length ' + queue.length);
+
     //when a user sends message -> emit 'new message' to client with id of user who sent the message
     socket.on('send message', function (data) {
         console.log(data);
@@ -94,7 +98,7 @@ io.sockets.on('connection', function (socket) {
     //Todo: Check for typing
     socket.on('is typing', function (data) {
         var room = rooms[socket.id];
-        io.to(room).emit('user typing', {isTyping: data, id: socket.id});
+        io.to(room).emit('user typing', { isTyping: data, id: socket.id });
     });
 
     //Todo: Check for stop typing
@@ -105,16 +109,15 @@ io.sockets.on('connection', function (socket) {
         users = room.split('&');
         var prop = users[0];
         delete rooms[prop];
-	console.log(prop);
-	queue.splice(queue.indexOf(prop), 1);
+        console.log(prop);
         prop = users[1];
         delete rooms[prop];
-	console.log(prop);
-	queue.splice(queue.indexOf(prop), 1);
+        console.log(prop);
+        console.log('connections in queue ' + queue.length);
     };
 
     //Todo: When a user disconnects, ask for starting chat again
-    socket.on('start chat', function() {
+    socket.on('start chat', function () {
         connectUsers(socket);
     });
 
@@ -131,27 +134,31 @@ io.sockets.on('connection', function (socket) {
             endChat(room);
         }
         connections.splice(connections.indexOf(socket), 1);
-		queue.splice(queue.indexOf(socket), 1);
+        if (queue.indexOf(socket) !== -1) {
+            queue.splice(queue.indexOf(socket), 1);
+            console.log('socket removed from queue and connections ' + socket.id);
+        }
         console.log('Disconnected: %s sockets connected', connections.length);
+        console.log('connections in queue ' + queue.length);
     });
-	
-	//after receiving image from user
+
+    //after receiving image from user
     socket.on('imageRequest', function (data) {
         console.log('in imageRequest method');
-		var room = rooms[socket.id];
-		len = data.length;
-		var uploadPath;
-		for (var i=0; i<len; i++){
-			file = data[i];
-			uploadPath = path.join(__dirname, '/uploads/'+file.name);
-			console.log('path :'+uploadPath);
-			fs.readFile(uploadPath, function(err, buf){
-				io.to(room).emit('image', { val: true, buffer: buf.toString('base64'),id: socket.id });
-				console.log('sending file to client');
-			});
-			//delete from server
-			fs.unlink(uploadPath);
-		}
+        var room = rooms[socket.id];
+        len = data.length;
+        var uploadPath;
+        for (var i = 0; i < len; i++) {
+            file = data[i];
+            uploadPath = path.join(__dirname, '/uploads/' + file.name);
+            console.log('path :' + uploadPath);
+            fs.readFile(uploadPath, function (err, buf) {
+                io.to(room).emit('image', { val: true, buffer: buf.toString('base64'), id: socket.id });
+                console.log('sending file to client');
+            });
+            //delete from server
+            fs.unlink(uploadPath);
+        }
     });
 
 });
