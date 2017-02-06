@@ -93,6 +93,7 @@
     <Content Include="public\javascripts\socket.io.js.map" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
+    <Content Include="routes\error.ejs" />
     <Content Include="typings.json" />
     <Content Include="views\error.ejs" />
     <Content Include="views\index3.ejs" />

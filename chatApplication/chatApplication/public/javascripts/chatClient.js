@@ -4,8 +4,8 @@
     var $chatBody = $('#chat-messages');
     var $send = $('#send');
     var $leave = $('#leave');
-    var $start = $('#start');
     var timeout;
+    var status; // 0-disconnected, 1-chatting, 2-waiting, 3-asking
     var typing = false;
 
     var sendMessage = function () {
@@ -67,14 +67,20 @@
     });
 
     $leave.click(function () {
-        socket.emit('leave room');
+        if (status === 3) {
+            status = 0;
+            socket.emit('leave room');
+            $leave.text('Start New');
+        }
+        else if (status === 1) {
+            status = 3;
+            $leave.text('Sure?');
+        }
+        else if (status === 0) {
+            socket.emit('start chat');
+            $('.chat-message').remove();
+        }
     });
-
-    $start.click(function () {
-        socket.emit('start chat');
-        $('.chat-message').remove();
-    });
-
 
     $message.keypress(function (e) {
         if (e.keyCode === 13 && e.shiftKey === false) {
@@ -93,7 +99,6 @@
                 timeout = setTimeout(timeoutFunction, 2000);
             }
         }
-        
     });
 
 
@@ -108,15 +113,22 @@
     });
 
     socket.on('no user', function () {
+        status = 2;
+        $leave.text('Connecting...');
         $('#chat-textarea').prop("disabled", true);
     });
 
     socket.on('user connected', function () {
+        status = 1;
+        $leave.text('End');
         $('#chat-textarea').prop("disabled", false);
     });
 
     socket.on('chat end', function () {
+        status = 0;
+        $leave.text('Start New');
         $chatBody.append('<div class="chat-message">Your chat has been disconnected </div>');
+        $('#chat-textarea').prop("disabled", true);
     });
 
     socket.on('image', function (data) {
