@@ -6,7 +6,7 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res) {
-    res.render('index');
+    res.render('chat');
 });
 
 router.post('/', function (req, res) {

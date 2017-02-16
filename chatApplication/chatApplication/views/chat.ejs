@@ -1,18 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<title>Chat Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Chat Application</title>
 
-	<!-- Bootstrap -->
-	
-	<script type="text/javascript" src="javascripts/socket.io.js"></script>
-	
+    <!-- Bootstrap -->
+
+    <script type="text/javascript" src="javascripts/socket.io.js"></script>
+
     <script type="text/javascript" src="/javascripts/jquery/jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="/javascripts/chatClient.js"></script>
+    <script type="text/javascript" src="/javascripts/chatClient.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -27,13 +27,9 @@
             <h1>Heading</h1>
         </div>
         <div class="flexbox-parent">
-
             <div class="wrapper">
-
                 <div class="main">
-                    <!--<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>-->
                     <div class="chat" id="chat">
-
                         <!--for chat area-->
                         <div class="row flexbox-item-grow">
                             <div class="col-md-12 col-xs-12" id="colChatMessages">
@@ -45,7 +41,6 @@
                         <div class="row" id="messagesArea">
                             <div class="col-md-12">
                                 <div class="input-group">
-
                                     <span class="input-group-addon btn btn-primary" id="leave">End</span>
                                     <textarea class="form-control chat-textarea" id="chat-textarea" placeholder="Type your message here" rows="2" style="resize:none"></textarea>
                                     <label class="input-group-addon btn btn-primary" for="upload-input">
@@ -59,14 +54,11 @@
                         </div>
                     </div>
                 </div>
-                <aside class="aside aside-1">Aside 1</aside>
-                <aside class="aside aside-2">Aside 2</aside>
-                <footer class="footer"></footer>
             </div>
-
         </div>
-
     </div>
-
+<footer class="footer">
+        This is a footer
+</footer>
 </body>
 </html>

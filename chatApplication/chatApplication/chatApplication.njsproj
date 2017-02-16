@@ -37,8 +37,8 @@
     <Compile Include="public\javascripts\chatClient.js" />
     <Compile Include="public\javascripts\jquery\jquery-3.1.1.js" />
     <Compile Include="public\javascripts\socket.io.js" />
-    <Compile Include="routes\index.js" />
-    <Compile Include="routes\users.js" />
+    <Compile Include="routes\home.js" />
+    <Compile Include="routes\chat.js" />
     <Content Include="package.json" />
     <Content Include="public\bootstrap\css\bootstrap-theme.css" />
     <Content Include="public\bootstrap\css\bootstrap-theme.css.map" />
@@ -91,13 +91,14 @@
     <Content Include="public\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="public\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="public\javascripts\socket.io.js.map" />
+    <Content Include="public\stylesheets\i.PNG" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
     <Content Include="routes\error.ejs" />
     <Content Include="typings.json" />
     <Content Include="views\error.ejs" />
-    <Content Include="views\index3.ejs" />
-    <Content Include="views\index.ejs" />
+    <Content Include="views\home.ejs" />
+    <Content Include="views\chat.ejs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="public\font-awesome-4.7.0\" />
