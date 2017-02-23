@@ -91,6 +91,7 @@
     <Content Include="public\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="public\font-awesome-4.7.0\scss\_variables.scss" />
     <Content Include="public\javascripts\socket.io.js.map" />
+    <Content Include="public\stylesheets\b.png" />
     <Content Include="public\stylesheets\i.PNG" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
