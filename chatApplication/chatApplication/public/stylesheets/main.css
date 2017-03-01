@@ -1,151 +1,150 @@
 ﻿html {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
 }
 
 body {
     background-color: #390909;
     height: 100%;
-    width:100%;  
+    width: 100%;
 }
 
 
-.top{
-    background-image:url("i.png");
+.top {
+    background-image: url("i.png");
     background-repeat: no-repeat;
     background-size: cover;
-    height:100%;
+    height: 100%;
 }
 
-.startChat-button{
-    margin-top:50px;
-    background-color:black;
+.startChat-button {
+    margin-top: 50px;
+    background-color: black;
     color: white;
     border-radius: 8px;
     font-size: 24px;
-    padding:10px;
+    padding: 10px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    cursor:pointer;
+    cursor: pointer;
 }
 
 #startChat-button {
-    margin-top:50px;
+    margin-top: 50px;
 }
 
-.startChat-button:hover{
-    color:white;
-    text-decoration:none;
+.startChat-button:hover {
+    color: white;
+    text-decoration: none;
 }
 
-.home-message{
-    margin-top:24px;
-    font-size:12px;
+.home-message {
+    margin-top: 24px;
+    font-size: 12px;
     color: black;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-.home-message p{
-    margin-bottom:0px;
+    .home-message p {
+        margin-bottom: 0px;
+    }
+
+#heading {
+    padding-top: 4%;
+    font-size: 24px;
+    font-weight: bold;
 }
 
-#heading{
-    padding-top:4%;
-    font-size:24px;
-    font-weight:bold;
-}
-
-.navbar-brand,#company {
+.navbar-brand, #company {
     color: white;
     text-decoration: none;
 }
 
-.navbar-brand,#company:hover {
-    color: white;
-    text-decoration: none;
-}
+    .navbar-brand, #company:hover {
+        color: white;
+        text-decoration: none;
+    }
 
 .quote {
-    margin-bottom:15px;
-    font-weight:bold;
-    color:white;
-    font-size:20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
 }
 
 .wrapper {
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  text-align: center;
-  height:100%;
-  width:100%;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+    height: 100%;
+    width: 100%;
 }
 
-.container-fluid{
-    height:87%;
-    width:100%;
+#mainChat{
+    margin-bottom:10px;
+    height: 90%;
+    width: 100%;
+}
+
+
+nav {
+    background: #120200;
+    width: 100%;
+    height:10%;
     margin-bottom:10px;
 }
 
-.page-header{
-    width:100%;
-    padding:10px;
-    height:13%;
-    color:white;
-    padding: 0px 0px 0px 0px;
-}
-
-
-.navbar {
-    background: #120200;
-}
-
 .wrapper > * {
-  flex: 1 100%;
+    flex: 1 100%;
 }
 
 .main {
-  text-align:left;
-  background: #1b0404;
-  height:100%;
-  padding: 10px 10px 10px 10px;
+    text-align: left;
+    background: #1b0404;
+    height: 100%;
+    padding: 10px 10px 10px 10px;
 }
 
-.chat-messages{
-    width:100%;
-    height:100%;
-    overflow-y:scroll;
-    padding:10px;
-    background-color:white;
+.chat-messages {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: white;
 }
 
 .chat-messages,
 .chat textarea {
-    border:1px solid #bbb;
-    outline:none;
+    border: 1px solid #bbb;
+    outline: none;
 }
 
-.input-group-addon{
+.chat-message{
+    margin:2px;
+}
+
+.input-group-addon {
     cursor: pointer;
 }
 
-.chat textarea{
-    width:100%;
-    padding:10px;
-    border-top:0;
-    margin:0;
-    max-width:100%;
-    overflow-y:scroll;
-    margin-bottom:10px;
+.chat textarea {
+    width: 100%;
+    padding: 10px;
+    border-top: 0;
+    margin: 0;
+    max-width: 100%;
+    overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
-.footer{
-  background: #120200;
-  color:white;
-  font-weight:bold;
+.footer {
+    background: #120200;
+    color: white;
+    font-weight: bold;
 }
 
 
-#chat{
+#chat {
     width: 100%;
     height: 100%;
     display: flex;
@@ -155,10 +154,10 @@ body {
     align-content: stretch;
 }
 
-#start-chat{
-    font-weight:bold;
-    color:blue;
-    text-decoration:underline;
+#start-chat {
+    font-weight: bold;
+    color: blue;
+    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -167,69 +166,126 @@ textarea {
 }
 
 
-.flexbox-item-grow
-{
+.flexbox-item-grow {
     flex: 1; /* same as flex: 1 1 auto; */
 }
 
-#colChatMessages{
-    height:100%;
+#colChatMessages {
+    height: 100%;
 }
 
-.bold-text{
-    font-weight:bold;
+.bold-text {
+    font-weight: bold;
 }
 
-#messagesArea{
-    margin-top:5px;
+#messagesArea {
+    margin-top: 5px;
 }
 
 #upload-input {
-   opacity: 0;
-   position: absolute;
-   z-index: -1;
-   display:none;
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    display: none;
 }
 
 .glyphicon {
-  font-size: 3em;
-  color: #9CA3A9;
+    font-size: 3em;
+    color: #9CA3A9;
 }
 
 #send {
-  color: #ffffff;
-  background-color: #F89406;
-  border: none;
-  cursor: pointer;
+    color: #ffffff;
+    background-color: #F89406;
+    border: none;
+    cursor: pointer;
 }
 
-#leave{
-  color: #ffffff;
-  background-color: #d91010;
-  border: none;
-  cursor: pointer; 
+#leave {
+    color: #ffffff;
+    background-color: #d91010;
+    border: none;
+    cursor: pointer;
 }
 
-#img{
-    height:60px;
-    width:80px;
+.imgChat {
+    height: 60px;
+    width: 80px;
+    border:2px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+    .imgChat:hover {
+        opacity: 0.7;
+    }
 
-.aside{
-    margin-top:10px;
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 700px;
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0);
+    }
+
+    to {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.aside {
+    margin-top: 10px;
 }
 
 .aside-1 {
-  background: gold;
+    background: gold;
 }
 
 .aside-2 {
-  background: hotpink;
+    background: hotpink;
 }
 
-.fill{
-    flex:1;
+.fill {
+    flex: 1;
 }
 
 .flexbox-parent {
@@ -241,52 +297,54 @@ textarea {
 
 
 @media all and (min-width: 600px) {
-  .aside {
-    flex: 1 auto;
-  }
+    .aside {
+        flex: 1 auto;
+    }
 
-  .home-message{
-    font-size:24px;
-    color: black;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  }
+    .home-message {
+        font-size: 24px;
+        color: black;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    }
 
-  #heading{
-    padding-top:4%;
-    font-size:50px;
-    font-weight:bold;
- }
+    #heading {
+        padding-top: 4%;
+        font-size: 50px;
+        font-weight: bold;
+    }
 }
+
 @media all and (min-width: 800px) {
 
-   .home-message{
-    font-size:24px;
-    color: black;
-    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  }
+    .home-message {
+        font-size: 24px;
+        color: black;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    }
 
-  #heading{
-    padding-top:4%;
-    font-size:50px;
-    font-weight:bold;
-  }
-  .main {
-    flex: 8;
-  }
+    #heading {
+        padding-top: 4%;
+        font-size: 50px;
+        font-weight: bold;
+    }
 
-  .aside-1 {
-    order: 1;
-  }
+    .main {
+        flex: 8;
+    }
 
-  .main {
-    order: 2;
-  }
+    .aside-1 {
+        order: 1;
+    }
 
-  .aside-2 {
-    order: 3;
-  }
+    .main {
+        order: 2;
+    }
 
-  .footer{
-      order:4;
-  }
+    .aside-2 {
+        order: 3;
+    }
+
+    .footer {
+        order: 4;
+    }
 }

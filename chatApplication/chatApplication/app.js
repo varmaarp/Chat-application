@@ -124,22 +124,24 @@ io.sockets.on('connection', function (socket) {
         console.log('connections in queue ' + queue.length);
     });
 
-    //after receiving image from user
-    socket.on('imageRequest', function (data) {
-        var room = rooms[socket.id];
-        len = data.length;
-        for (var i = 0; i < len; i++) {
-            file = data[i];
-            io.to(room).emit('image', { val: true, buffer: chat.b[file.name].toString('base64'), id: socket.id });
-            console.log('sending file to client');
-        }
-    });
-
+    /*
     socket.on('imageSend', function (data) {
-        //console.log(data);
         var room = rooms[socket.id];
         io.to(room).emit('imageNew', { val: true, imgSrc: data, id: socket.id });
         console.log('sending file to client');
+    });
+    */
+
+    socket.on('imageRequest', function (data){
+        console.log(data);
+        console.log(chat.b[data]);
+        var room = rooms[socket.id];
+        // = data.length;
+        //for (var i = 0; i < len; i++) {
+            //file = data[i];
+            io.to(room).emit('imageNew', { val: true, buffer: chat.b[data], id: socket.id });
+            console.log('sending file to client');
+        //}
     });
 
 });

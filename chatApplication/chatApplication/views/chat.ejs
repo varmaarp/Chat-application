@@ -21,18 +21,17 @@
 
 </head>
 <body>
-    <div class="page-header">
-        <nav class="navbar navbar-default">
+    
+        <nav>
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#"><img src="/stylesheets/b.png" height=40 class="d-inline-block align-top" alt="" /><span id="company" style="font-size:30px"> StranChat.com </span></a>
                 </div>
             </div>
         </nav>
-    </div>
-    <div class="container-fluid">
+    
+    <div class="container-fluid" id="mainChat">
         <div class="flexbox-parent">
-            <div class="text-center quote">Meet someone new everyday!</div>
             <div class="wrapper">
                 <div class="main">
                     <div class="chat" id="chat">
@@ -40,6 +39,9 @@
                         <div class="row flexbox-item-grow">
                             <div class="col-md-12 col-xs-12" id="colChatMessages">
                                 <div class="chat-messages" id="chat-messages"></div>
+                                <div id="myModal" class="modal">
+                                    <img class="modal-content" id="img01">
+                                </div>
                             </div>
                         </div>
 
@@ -49,12 +51,13 @@
                                 <div class="input-group">
                                     <span class="input-group-addon btn btn-primary" id="leave">End</span>
                                     <textarea class="form-control chat-textarea" id="chat-textarea" placeholder="Type your message here" rows="2" style="resize:none"></textarea>
+                                    <span class="input-group-addon btn btn-primary" id="send">Send</span>
                                     <label class="input-group-addon btn btn-primary" for="upload-input">
                                         <span class="fa fa-camera-retro fa-2x" aria-hidden="false">
                                             <input id="upload-input" type="file" name="uploads[]" multiple="multiple" accept="image/*" />
                                         </span>
                                     </label>
-                                    <span class="input-group-addon btn btn-primary" id="send">Send</span>
+                                    
                                 </div>
                             </div>
                         </div>

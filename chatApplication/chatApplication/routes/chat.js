@@ -11,8 +11,20 @@ router.get('/', function (req, res) {
     res.render('chat');
 });
 
-router.post('/', function (req, res) {
-    console.log('in post');
+router.post('/', upload.any(), function (req, res) {
+
+    if (req.files) {
+        var len = req.files.length;
+        for (var i = 0; i < len; i++) {
+            var buff = req.files[i].buffer;
+            var name = req.files[i].originalname;
+            router.b[name] = buff;
+        }
+        req.files = [];
+        res.end('success');
+    } else {
+        console.log('failed');
+    }
     
 });
 
