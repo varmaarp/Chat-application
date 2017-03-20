@@ -1,5 +1,0 @@
-﻿#!/usr/bin/env node
-var debug = require('debug')('chatApplication');
-var app = require('../app');
-
-app.listen(3000);
