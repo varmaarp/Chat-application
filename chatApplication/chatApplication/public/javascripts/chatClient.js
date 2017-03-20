@@ -40,7 +40,12 @@
             // loop through all the selected files
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
-                readFile(file);
+                if (file.size <= 5242880) {
+                    readFile(file);
+                }
+                else {
+                    alert('File size too big. Please select a file less than 5Mb');
+                }
             }
         }
     });
@@ -194,7 +199,7 @@
     socket.on('no user', function () {
         status = 2;
         $leave.text('Connecting...');
-        $chatBody.append('<div class="chat-message bold-text">Looking for a random stranger on the server...</div>');
+        $chatBody.append('<div class="chat-message"><strong>Looking for a random stranger on the server...</strong></div>');
         $('#chat-textarea').prop("disabled", true);
         $('#upload-input').prop("disabled", true);
     });
@@ -204,7 +209,9 @@
         imgId = 0;
         $leave.text('End');
         $('.chat-message').remove();
-        $chatBody.append('<div class="chat-message bold-text">You are connected to a random stranger. Press Esc key to disconnect.</div>');
+        $('.user-typing').remove();
+        $message.val('');
+        $chatBody.append('<div class="chat-message"><strong>You are connected to a random stranger. Press Esc key to disconnect.</strong></div>');
         $('#chat-textarea').prop("disabled", false);
         $('#upload-input').prop("disabled", false);
     });
@@ -212,7 +219,7 @@
     socket.on('chat end', function () {
         status = 0;
         $leave.text('Start New');
-        $chatBody.append('<div class="chat-message bold-text">Your chat has been disconnected.</div>');
+        $chatBody.append('<div class="chat-message"><strong>Your chat has been disconnected.</strong></div>');
         $chatBody.append('<div class="chat-message" id="start-chat">Click here to start chatting again.</div>');
         scrollDown();
         $('#chat-textarea').prop("disabled", true);
@@ -239,7 +246,7 @@
     socket.on('user typing', function (data) {
         if (data.isTyping) {
             if (data.id !== socket.id) {
-                $chatBody.append('<div class="user-typing bold-text">Stranger is typing...</div>');
+                $chatBody.append('<div class="user-typing"><strong>Stranger is typing...</strong></div>');
                 scrollDown();
                 timeout = setTimeout(timeoutFunction, 2000);
             }
@@ -255,7 +262,6 @@
         $('#img01').attr('src',this.src);
     });
     
-    // When the user clicks on <span> (x), close the modal
     $('#myModal').on('click', function () {
         modal.style.display = "none";
     });

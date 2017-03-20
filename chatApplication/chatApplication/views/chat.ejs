@@ -1,73 +1,75 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Chat Application</title>
+    <title>StranChat.com</title>
 
     <!-- Bootstrap -->
-
+    <script type="text/javascript" src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script type="text/javascript" src="javascripts/socket.io.js"></script>
-
-    <script type="text/javascript" src="/javascripts/jquery/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="/javascripts/chatClient.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/Stylesheet3.css" />
 
 </head>
 <body>
-    
+    <section class="flexbox">
+
         <nav>
             <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><img src="/stylesheets/b.png" height=40 class="d-inline-block align-top" alt="" /><span id="company" style="font-size:30px"> StranChat.com </span></a>
-                </div>
+                <a href="/"><img src="/stylesheets/b.png" id="imgHeading" class="d-inline-block align-top" alt="" /><h1 id="navbarHeading"> StranChat.com </h1></a>
             </div>
         </nav>
-    
-    <div class="container-fluid" id="mainChat">
-        <div class="flexbox-parent">
-            <div class="wrapper">
-                <div class="main">
-                    <div class="chat" id="chat">
-                        <!--for chat area-->
-                        <div class="row flexbox-item-grow">
-                            <div class="col-md-12 col-xs-12" id="colChatMessages">
-                                <div class="chat-messages" id="chat-messages"></div>
-                                <div id="myModal" class="modal">
-                                    <img class="modal-content" id="img01">
-                                </div>
-                            </div>
-                        </div>
 
-                        <!--for messages area-->
-                        <div class="row" id="messagesArea">
-                            <div class="col-md-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon btn btn-primary" id="leave">End</span>
-                                    <textarea class="form-control chat-textarea" id="chat-textarea" placeholder="Type your message here" rows="2" style="resize:none"></textarea>
-                                    <span class="input-group-addon btn btn-primary" id="send">Send</span>
-                                    <label class="input-group-addon btn btn-primary" for="upload-input">
-                                        <span class="fa fa-camera-retro fa-2x" aria-hidden="false">
-                                            <input id="upload-input" type="file" name="uploads[]" multiple="multiple" accept="image/*" />
-                                        </span>
-                                    </label>
-                                    
-                                </div>
-                            </div>
-                        </div>
+        <div class="container-fluid mainChat flexbox">
+            <div class="main flexbox">
+                <!--for chat area-->
+                <div class="chat-messages" id="chat-messages">
+                </div>
+                <div class="modal" id="myModal">
+                    <img class="modal-content" id="img01">
+                </div>
+
+                <!--for messages area-->
+                <div class="messagesArea">
+                    <div class="input-group">
+                        <span class="input-group-addon btn" id="leave">End</span>
+                        <textarea class="form-control chat-textarea" id="chat-textarea" placeholder="Type your message here" rows="2" style="resize:none"></textarea>
+                        <span class="input-group-addon btn" id="send">Send</span>
+                        <label class="input-group-addon btn" for="upload-input">
+                            <span class="fa fa-camera-retro fa-2x" aria-hidden="false">
+                                <input id="upload-input" type="file" name="uploads[]" multiple="multiple" accept="image/*" />
+                            </span>
+                        </label>
                     </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-xs-12 col-sm-9" id="left">
+                    <p>Copyright © <a href="/">StranChat.com </a> | <a href="/about">About</a> | <a href="/privacy">Privacy & Terms</a> | <a href="/contact">Contact Us</a></p>
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-3" id="right">
+                    <a href="https://www.facebook.com/StranChat-195886427555106/"><i class="fa fa-facebook-square social"></i></a>
+                    <a href="https://plus.google.com/b/109632010371057696281/109632010371057696281"><i class="fa fa-google-plus-square social"></i></a>
+                    <a href="mailto:StranChat@gmail.com"><i class="fa fa-envelope-square social"></i></a>
+                    <a href="https://github.com/varmaarp/chat-application"><i class="fa fa-github social"></i></a>
                 </div>
             </div>
         </div>
-    </div>
-    <footer class="footer">
-        This is a footer
     </footer>
+
 </body>
 </html>

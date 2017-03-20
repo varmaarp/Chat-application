@@ -4,7 +4,7 @@ var router = express.Router();
 var storage = multer.memoryStorage()
 var upload = multer({ storage: storage })
 
-router.b = [];
+router.buff = [];
 
 /* GET home page. */
 router.get('/', function (req, res) {
@@ -18,7 +18,7 @@ router.post('/', upload.any(), function (req, res) {
         for (var i = 0; i < len; i++) {
             var buff = req.files[i].buffer;
             var name = req.files[i].originalname;
-            router.b[name] = buff;
+            router.buff[name] = buff;
         }
         req.files = [];
         res.end('success');

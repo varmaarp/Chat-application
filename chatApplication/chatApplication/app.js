@@ -3,29 +3,34 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var routes = require('./routes/home');
 var chat = require('./routes/chat');
+var about = require('./routes/about');
+var privacy = require('./routes/privacy');
+var contact = require('./routes/contact');
 var app = express();
 var server = app.listen(process.env.PORT || 5000);
 var io = require('socket.io')(server);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use('/', routes);
 app.use('/chat', chat);
+app.use('/about', about);
+app.use('/privacy', privacy);
+app.use('/contact', contact);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+    res.status(404);
+    res.render('error');
+    return;
 });
 
-// error handlers
 
 var connections = []
 var queue = []
@@ -37,23 +42,18 @@ var connectUsers = function (socket) {
     if (queue.length === 0) {
         console.log('socket pushed to waiting queue');
         queue.push(socket);
-
-        //since no one to talk to, message area should be disabled
         socket.emit('no user');
     }
     //if queue has a user -> pop user and create room with the socket
     else {
 
-        //could write a function to make it random
         var user = queue.pop();
         var roomId = socket.id + '&' + user.id;
         console.log('room id ' + roomId);
 
-        //join both to room
         user.join(roomId);
         socket.join(roomId);
 
-        //map room to user ids
         rooms[user.id] = roomId;
         rooms[socket.id] = roomId;
 
@@ -69,7 +69,6 @@ io.sockets.on('connection', function (socket) {
     //when a user connects -> add to connections
     connections.push(socket);
     console.log('Connected: %s socktes connected', connections.length);
-
 
     //connecting to user waiting in queue
     connectUsers(socket);
@@ -98,7 +97,7 @@ io.sockets.on('connection', function (socket) {
         console.log(prop);
         console.log('connections in queue ' + queue.length);
     };
-    
+
     socket.on('start chat', function () {
         connectUsers(socket);
     });
@@ -124,24 +123,10 @@ io.sockets.on('connection', function (socket) {
         console.log('connections in queue ' + queue.length);
     });
 
-    /*
-    socket.on('imageSend', function (data) {
+    //after receiving image as buffer -> send buffer data to other user
+    socket.on('imageRequest', function (data) {
         var room = rooms[socket.id];
-        io.to(room).emit('imageNew', { val: true, imgSrc: data, id: socket.id });
-        console.log('sending file to client');
-    });
-    */
-
-    socket.on('imageRequest', function (data){
-        console.log(data);
-        console.log(chat.b[data]);
-        var room = rooms[socket.id];
-        // = data.length;
-        //for (var i = 0; i < len; i++) {
-            //file = data[i];
-            io.to(room).emit('imageNew', { val: true, buffer: chat.b[data], id: socket.id });
-            console.log('sending file to client');
-        //}
+        io.to(room).emit('imageNew', { val: true, buffer: chat.buff[data], id: socket.id });
     });
 
 });
