@@ -1,0 +1,7 @@
+chatApplication/.vs/*
+chatApplication/chatApplication.sln
+chatApplication/chatApplication/bin/*
+chatApplication/chatApplication/obj/*
+chatApplication/chatApplication/typings/*
+chatApplication/chatApplication/chatApplication.njsproj
+chatApplication/chatApplication/typings.json
