@@ -1,0 +1,5 @@
+A Node.js based chat application having a responsive UI.
+
+Front End - Bootstrap, FlexBox, JavaScript, Jquery
+Backend - Node.js
+Hosting - Heroku
